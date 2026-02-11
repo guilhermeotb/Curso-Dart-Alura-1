@@ -8,6 +8,10 @@ void main() {
 
   String operacao = "";
 
+  String? entrada = "";
+
+  List<String> operacoes = <String>["+", "-", "*", "/"];
+
   void soma() {
     print(valor1 + valor2);
   }
@@ -42,31 +46,36 @@ void main() {
     }
   }
 
-  print("Digite o Primeiro Valor");
+  void getOperacao() {
+    print("Digite a Operação a Ser Realizada ${operacoes.toString()} ");
 
-  String? entrada = stdin.readLineSync();
-
-  if (entrada != null) {
-    if (entrada != "") {
-      valor1 = double.parse(entrada);
+    entrada = stdin.readLineSync();
+    if (entrada != null) {
+      if (operacoes.contains(entrada)) {
+        operacao = entrada!;
+      } else {
+        print("Operação inválida");
+        getOperacao();
+      }
     }
   }
 
-  print("Digite a Operação a Ser Realizada(+ , - , *, /)");
-
+  print("Digite o Primeiro Valor");
   entrada = stdin.readLineSync();
   if (entrada != null) {
-    operacao = entrada;
+    if (entrada != "") {
+      valor1 = double.parse(entrada!);
+    }
   }
 
-
+  getOperacao();
 
   print("Digite o Segundo Valor");
 
   entrada = stdin.readLineSync();
   if (entrada != null) {
     if (entrada != "") {
-      valor2 = double.parse(entrada);
+      valor2 = double.parse(entrada!);
     }
   }
 
