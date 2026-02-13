@@ -1,12 +1,11 @@
 import 'dart:io';
+
+
 void main() {
 
 List<String> notas = <String>[]; 
-getComando();
-adicionarNota(notas);
-adicionarNota(notas);
-adicionarNota(notas);
-listarNotas(notas);
+menu(notas);
+
 }
 
 String getComando()  {
@@ -39,6 +38,40 @@ return notas;
 
 void listarNotas(List<String> notas) {
   for(var i = 0; i < notas.length; i++){
-    print(notas[i]);
+    print("${i + 1}. ${notas[i]}");
   }
+}
+
+void menu(List<String> notas){
+
+ cabecalho(); 
+
+print("");
+ String comando = getComando(); 
+ print("");
+
+ switch (comando){
+  case "1":
+  adicionarNota(notas);
+  menu(notas);
+
+  case "2":
+
+  listarNotas(notas);
+  menu(notas);
+
+  case "3":
+  print("Até breve!");
+
+ }
+
+}
+
+void cabecalho(){
+print(" ____  ____  _____ ____  _      _  ____  ____  ____  ____  ____    ____  _____   _      ____ _____ ____  ____ ");
+print("/  _ \\/  __\\/  __//  _ \\/ \\  /|/ \\/_   \\/  _ \\/  _ \\/  _ \\/  __\\  /  _ \\/  __/  / \\  /|/  _ Y__ __Y  _ \\/ ___\\");
+print("| / \\||  \\/|| |  _| / \\|| |\\ ||| | /   /| / \\|| | \\|| / \\||  \\/|  | | \\||  \\    | |\\ ||| / \\| / \\ | / \\||    \\");
+print("| \\_/||    /| |_//| |-||| | \\||| |/   /_| |-||| |_/|| \\_/||    /  | |_/||  /_   | | \\||| \\_/| | | | |-||\\___ |");
+print("\\____/\\_/\\_\\\\____\\\\_/ \\|\\_/  \\|\\_/\\____/\\_/ \\|\\____/\\____/\\_/\\_\\  \\____/\\____\\  \\_/  \\|\\____/ \\_/ \\_/ \\|\\____/");
+print("                                                                                                              "); 
 }
